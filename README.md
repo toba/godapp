@@ -4,25 +4,29 @@ potential performance and security advantages in native [Go contract bindings](h
 
 # Setup
 
-### [Install solc](https://github.com/ethereum/solidity/releases)
+## [Install solc](https://github.com/ethereum/solidity/releases)
 Needed only if generating Go directly from `sol` rather than from `ABI`.
 
-### OSX
+#### OSX
 ```
 brew tap ethereum/ethereum
 brew install solidity
 brew linkapps solidity
 ```
 
-### [Install Geth](https://ethereum.github.io/go-ethereum/downloads/)
+#### Windows
+Download the latest release zip and copy `solc.exe` to the path (such as `$GOPATH/bin`). The other files in the archive aren't needed
+for Go bindings.
+
+## [Install Geth](https://ethereum.github.io/go-ethereum/downloads/)
 The Windows installer puts it in the `path`. For other operating systems, move the binary to an existing path location such as `$GOPATH/bin`.
 
 Alternatively, build from the source downloaded below.
 
-### Install Solidity language support
+## Install Solidity language support
 In VSCode, the [JuanBlanco.solidity](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity) plugin provides syntax support and compilation.
 
-### Install ABI to Go generator
+## Install Go bindings generator
 
 ```
 go get -u github.com/ethereum/go-ethereum

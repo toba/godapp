@@ -30,17 +30,10 @@
       },
       {
          "taskName": "Generate ABI Binding",
-         "command": "abigen --sol ./contracts/token.sol --pkg contracts --out ./contracts/token.go",
+         "command": "abigen --sol ./contracts/bookmark.sol --pkg contracts --out ./contracts/bookmark.go",
          "type": "shell",
          "group": "build",
          "problemMatcher": ["$go"]
-      },
-      {
-         "taskName": "Create Genesis Block",
-         "command": "geth init ./CustomGenesis.json",
-         "type": "shell",
-         "group": "build",
-         "problemMatcher": []
       }
    ]
 }
