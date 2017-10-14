@@ -1,1 +1,9 @@
+debug
+data
+certs
 .vscode/chrome
+node_modules
+*.test
+toba-debug.exe
+toba-debug
+gin-bin.exe

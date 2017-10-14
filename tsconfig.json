@@ -1,0 +1,41 @@
+{
+   "compilerOptions": {
+      "target": "es5",
+      "module": "es2015",
+      "newLine": "LF",
+      "noImplicitAny": true,
+      "noImplicitThis": true,
+      // cannot be true because that blocks mocha, React and others
+      "noUnusedLocals": false,
+      "noUnusedParameters": false,
+      "outDir": "./static",
+      "sourceMap": true,
+      "allowJs": false,
+      "removeComments": true,
+      "alwaysStrict": true,
+      "strictNullChecks": false,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": false,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react",
+      "lib": ["dom", "es2015"],
+      "typeRoots": ["./node_modules/@types"],
+      // https://www.typescriptlang.org/docs/handbook/module-resolution.html
+      // https://github.com/Microsoft/TypeScript/issues/5039
+      "baseUrl": ".",
+      "paths": {
+         "lib/*": ["./lib/*"],
+         "jsx/*": ["./components/*"],
+         "state/*": ["./lib/state/*"]
+      }
+   },
+   "include": [
+      "./lib/**/*.ts",
+      "./modules/**/*.ts*",
+      "./components/**/*.ts*"
+   ],
+   "exclude": [
+      "./lib/types/",
+      "./node_modules/"
+   ]
+}

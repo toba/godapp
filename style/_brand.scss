@@ -1,0 +1,60 @@
+
+$primaryColor: rgb(92, 196, 255);
+$darkerPrimary: desaturate(darken($primaryColor, 45%), 10%);
+$darkPrimary: desaturate(darken($primaryColor, 25%), 10%);
+$lightPrimary: lighten($primaryColor, 18%);
+$highlightColor: rgb(255, 166, 0);
+$darkHighlight: darken($highlightColor, 20%);
+$brightHighlight: lighten($highlightColor, 20%);
+
+.frog {
+   width: 100%;
+
+   .line, .back-legs, .front-legs, .eyes, .torso, .head, .chin, .forehead, .tongue {
+      stroke: rgba(0, 0, 0, 0.5);
+      &.noline { stroke: none; }
+   }
+
+   .line {
+      fill: none;
+   }
+
+   .head {
+      fill: $primaryColor;
+   }
+   .forehead {
+      fill: $highlightColor;
+   }
+   .eyes {
+      fill: rgb(255, 255, 255);
+   }
+   .pupil {
+      fill: rgb(0, 0, 0);
+   }
+   .cheek {
+      fill: $darkPrimary;
+   }
+   .mouth {
+      fill: rgb(0, 0, 0);
+   }
+   .tongue {
+      fill: rgb(180, 70, 70);
+      transform: scaleY(0);
+      transform-origin: right top;
+   }
+   .nostril {
+      fill: rgb(0, 0, 0);
+   }
+   .chin {
+      fill: $lightPrimary;
+   }
+   .torso {
+      fill: $primaryColor;
+   }
+   .front-legs {
+      fill: $lightPrimary;
+   }
+   .back-legs {
+      fill: $darkPrimary;
+   }
+}
