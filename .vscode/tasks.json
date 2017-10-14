@@ -4,7 +4,6 @@
       {
          "taskName": "Run Server",
          "command": "go run ./main.go ./token.go",
-         "type": "shell",
          "group": "build",
          "problemMatcher": [
             "$go"
@@ -18,22 +17,48 @@
       },
       {
          "taskName": "Ethereum Test Network",
-         "command": "geth --testnet --fast --cache=512 console",
-         "type": "shell",
-         "group": "test"
+         "command": "geth",
+         "args": [
+            "--testnet",
+            "--fast",
+            "--cache=512",
+            "console"
+         ],
+         "group": "none"
       },
       {
-         "taskName": "Ethereum Morden Network",
-         "command": "geth --morden --fast --cache=512 console",
-         "type": "shell",
-         "group": "test"
+         "taskName": "Ethereum Rinkeby Network",
+         "command": "geth",
+         "args": [
+            "--networkid=4",
+            "--datadir=${env:HOME}/.rinkeby",
+            "--cache=512",
+            "--ethstats=\"yournode:Respect my authoritah!@stats.rinkeby.io\"",
+            "--bootnodes=enode://a24ac7c5484ef4ed0c5eb2d36620ba4e4aa13b8c84684e1b4aab0cebea2ae45cb4d375b77eab56516d34bfbd3c1a833fc51296ff084b770b94fb9028c4d25ccf@52.169.42.101:30303",
+            "--rpc",
+            "--rpcapi=\"personal,eth,network\""
+         ],
+         "group": "none",
+         "windows": {
+            "options": {
+               "env": {
+                  "HOME": "${env:APPDATA}"
+               }
+            }
+         }
       },
       {
-         "taskName": "Generate ABI Binding",
-         "command": "abigen --sol ./contracts/bookmark.sol --pkg contracts --out ./contracts/bookmark.go",
-         "type": "shell",
+         "taskName": "Generate Go Contract Binding",
+         "command": "abigen",
+         "args": [
+            "--sol ./contracts/bookmark.sol",
+            "--pkg contracts",
+            "--out ./contracts/bookmark.go"
+         ],
          "group": "build",
-         "problemMatcher": ["$go"]
+         "problemMatcher": [
+            "$go"
+         ]
       },
       {
          "taskName": "Build for Heroku",
@@ -56,13 +81,47 @@
          "problemMatcher": []
       },
       {
+         "taskName": "Download Rinkeby Genesis",
+         "command": "wget -O ./genesis/rinkeby.json https://www.rinkeby.io/rinkeby.json",
+         "windows": {
+            "command": "wget https://www.rinkeby.io/rinkeby.json -OutFile ./genesis/rinkeby.json"
+         },
+         "problemMatcher": []
+      },
+      {
+         "taskName": "Initialize Rinkeby",
+         "command": "geth",
+         "args": [
+            "--datadir=${env:HOME}/.rinkeby",
+            "init ./genesis/rinkeby.json"
+         ],
+         "windows": {
+            // "args": [
+            //    "--datadir=${env:APPDATA}\\.rinkeby",
+            //    "init ./genesis/rinkeby.json"
+            // ],
+            "options": {
+               "env": {
+                  "HOME": "${env:APPDATA}"
+               }
+            }
+         },
+         "problemMatcher": [
+            "$go"
+         ]
+      },
+      {
          "taskName": "Webpack",
          "command": "node_modules/.bin/webpack",
          "type": "shell"
       },
       {
          "taskName": "Webpack Watch",
-         "command": "node_modules/.bin/webpack --watch --display-error-details",
+         "command": "node_modules/.bin/webpack",
+         "args": [
+            "--watch",
+            "--display-error-details"
+         ],
          "type": "shell",
          "group": "build",
          "problemMatcher": [
@@ -82,12 +141,18 @@
                "TS_NODE_COMPILER_OPTIONS": "{\"module\": \"commonjs\", \"target\": \"es5\"}"
             }
          },
-         "command": "node_modules/.bin/mocha --compilers ts:ts-node/register,tsx:ts-node/register --require ts-node/register --require ignore-styles --require tsconfig-paths/register ./**/*.test.ts*",
-         "type": "shell",
+         "command": "node_modules/.bin/mocha",
+         "args": [
+            "--compilers ts:ts-node/register,tsx:ts-node/register",
+            "--require ts-node/register",
+            "--require ignore-styles",
+            "--require tsconfig-paths/register",
+            "./**/*.test.ts*"
+         ],
          "group": "test",
          "problemMatcher": [
             "$tsc"
          ]
-      },
+      }
    ]
 }

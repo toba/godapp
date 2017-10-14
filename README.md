@@ -5,7 +5,7 @@ potential performance and security advantages in native [Go contract bindings](h
 # Setup
 
 ## Install solc
-Needed only if generating Go directly from `sol` rather than from `ABI`.
+Needed if generating Go contract bindings directly from `sol` rather than from `ABI`.
 
 #### OSX
 ```
@@ -34,10 +34,12 @@ cd $GOPATH/src/github.com/ethereum/go-ethereum
 go install ./cmd/abigen
 ```
 
-# Deployment
-Uses binary Heroku buildpack
-https://github.com/ph3nx/heroku-binary-buildpack
-https://github.com/ph3nx/heroku-binary-buildpack.git
+# Testing
+
+[Rinkeby node](https://gist.github.com/cryptogoth/10a98e8078cfd69f7ca892ddbdcf26bc)
+
+# Deploying
+Use [binary Heroku buildpack](https://github.com/ph3nx/heroku-binary-buildpack) to directly deploy binary.
 
 add `PATH` env
 ```

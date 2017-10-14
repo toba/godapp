@@ -1,4 +1,4 @@
-const source = "./";
+const source = "./src";
 const target = "./static";
 const webpack = require("webpack");
 const path = require("path");
@@ -78,7 +78,7 @@ module.exports = {
       // https://medium.com/webpack/webpack-3-official-release-15fd2dd8f07b
       // https://medium.com/webpack/webpack-freelancing-log-book-week-5-7-4764be3266f5
       // this plugin is preventing watcher from emitting correct bundles
-      //new webpack.optimize.ModuleConcatenationPlugin(),
+      new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.SourceMapDevToolPlugin({
          test: [/\.js$/],
          exclude: [/common\./],
